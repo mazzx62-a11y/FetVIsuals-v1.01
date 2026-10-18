@@ -1,0 +1,3 @@
+package fetvisuals.module.settings;
+import com.google.gson.*; import fetvisuals.module.Setting; import java.util.*;
+public final class ModeSetting extends Setting<String>{private final String[] modes; public ModeSetting(String n,String v,String...m){super(n,v);modes=m;} public String[] modes(){return modes;} public void next(){int i=Arrays.asList(modes).indexOf(value);value=modes[(i+1+modes.length)%modes.length];} public JsonElement toJson(){return new JsonPrimitive(value);} public void fromJson(JsonElement j){if(j!=null&&j.isJsonPrimitive()){String s=j.getAsString();for(String m:modes)if(m.equals(s)){value=s;break;}}}}

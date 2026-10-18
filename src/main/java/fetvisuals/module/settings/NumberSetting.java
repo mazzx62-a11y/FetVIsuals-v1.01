@@ -1,0 +1,3 @@
+package fetvisuals.module.settings;
+import com.google.gson.*; import fetvisuals.module.Setting;
+public final class NumberSetting extends Setting<Double>{private final double min,max,step; public NumberSetting(String n,double v,double min,double max,double step){super(n,v);this.min=min;this.max=max;this.step=step;} public double min(){return min;} public double max(){return max;} public double step(){return step;} public void setClamped(double v){value=Math.max(min,Math.min(max,v));} public JsonElement toJson(){return new JsonPrimitive(value);} public void fromJson(JsonElement j){if(j!=null&&j.isJsonPrimitive())setClamped(j.getAsDouble());}}
